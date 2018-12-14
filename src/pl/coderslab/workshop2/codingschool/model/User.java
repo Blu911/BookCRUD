@@ -48,10 +48,10 @@ public class User {
     }
 
     public void setPassword(String password) {
-        this.password = BCrypt.hashpw(password,BCrypt.gensalt());
+        this.password = BCrypt.hashpw(password, BCrypt.gensalt());
     }
 
-    public void saveToDB (Connection conn) throws SQLException {
+    public void saveToDB(Connection conn) throws SQLException {
         if (this.id == 0) {
             String sql = "INSERT INTO users(username, email, password) VALUES (?, ?, ?)";
             String[] generatedColumns = {"id"};
@@ -66,6 +66,32 @@ public class User {
                 this.id = rs.getInt(1);
             }
         }
+    }
+
+
+    public String toString () {
+        StringBuilder sb = new StringBuilder("User:\n");
+        sb.append(String.format("* name: %s\n", this.name));
+        sb.append(String.format("* email: %s\n", this.email));
+        sb.append(String.format("* hashed password: %s\n", this.password));
+        sb.append(String.format("* Id: %d\n", this.id));
+        return sb.toString();
+    }
+
+    static public User loadUserById(Connection conn, int id) throws SQLException {
+        String sql = "SELECT * FROM users where id= ?";
+        PreparedStatement preparedStatement = conn.prepareStatement(sql);
+        preparedStatement.setInt(1, id);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        if (resultSet.next()) {
+            User loadedUser = new User();
+            loadedUser.id = resultSet.getInt("id");
+            loadedUser.name = resultSet.getString("username");
+            loadedUser.password = resultSet.getString("password");
+            loadedUser.email = resultSet.getString("email");
+            return loadedUser;
+        }
+        return null;
     }
 
 }

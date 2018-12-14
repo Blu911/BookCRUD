@@ -14,8 +14,11 @@ public class Main {
 
         try (Connection conn = ConnectionFactory.getConnection(dbUsername, dbPassword, dbName)) {
 
-            User user = new User("Krystian", "krys@gmail.com", "haslomaslo");
-            user.saveToDB(conn);
+//            User user = new User("Krystian", "krys@gmail.com", "haslomaslo");
+//            user.saveToDB(conn);
+
+            User user1 = User.loadUserById(conn, 1);
+            System.out.println(user1);
 
         } catch (SQLException e) {
             e.printStackTrace();
