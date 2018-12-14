@@ -2,6 +2,7 @@ package pl.coderslab.workshop2.codingschool.model;
 
 import org.mindrot.jbcrypt.BCrypt;
 
+import javax.jws.soap.SOAPBinding;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -118,6 +119,27 @@ public class User {
             users.add(loadedUser);
         }
         return users;
+    }
+
+    public void delete(Connection conn) throws SQLException {
+        if (this.id != 0) {
+            String sql = "DELETE FROM users WHERE id = ?";
+            PreparedStatement preparedStatement = conn.prepareStatement(sql);
+            preparedStatement.setInt(1, this.id);
+            preparedStatement.executeUpdate();
+            this.id = 0;
+        }
+    }
+
+    //DRUGI SPOSOB NA USUNIECIE USERA
+    static public void deleteUser(Connection conn, User user) throws  SQLException {
+        if (user.id != 0) {
+            String sql = "DELETE FROM users WHERE id = ?";
+            PreparedStatement preparedStatement = conn.prepareStatement(sql);
+            preparedStatement.setInt(1, user.id);
+            preparedStatement.executeUpdate();
+            user.id = 0;
+        }
     }
 
 }

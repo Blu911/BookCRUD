@@ -31,17 +31,28 @@ public class Main {
 //                System.out.println(user);
 //            }
 
+//            User existingUser = User.loadUserById(conn, 3);
+//            if (existingUser != null) {
+//
+//                System.out.println(String.format("Przed zmianami: %s", existingUser.toString()));
+//
+//                existingUser.setName("Hermes");
+//                existingUser.setEmail("hermes@gmail.com");
+//                existingUser.saveToDB(conn);
+//
+//                System.out.println(String.format("Po zmianach: %s", existingUser.toString()));
+//            }
+
             User existingUser = User.loadUserById(conn, 3);
             if (existingUser != null) {
-
-                System.out.println(String.format("Przed zmianami: %s", existingUser.toString()));
-
-                existingUser.setName("Hermes");
-                existingUser.setEmail("hermes@gmail.com");
-                existingUser.saveToDB(conn);
-
-                System.out.println(String.format("Po zmianach: %s", existingUser.toString()));
+                User.deleteUser(conn, existingUser);
             }
+
+            ArrayList<User> users = User.loadAllUsers(conn);
+            for (User user : users) {
+                System.out.println(user);
+            }
+
 
         } catch (SQLException e) {
             e.printStackTrace();
