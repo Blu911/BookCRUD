@@ -2,6 +2,11 @@ package pl.coderslab.workshop2.codingschool.model;
 
 import org.mindrot.jbcrypt.BCrypt;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 public class User {
     private int id;
     private String name;
@@ -16,7 +21,6 @@ public class User {
         this.name = name;
         this.email = email;
         setPassword(password);
-
     }
 
     public int getId() {
@@ -45,6 +49,23 @@ public class User {
 
     public void setPassword(String password) {
         this.password = BCrypt.hashpw(password,BCrypt.gensalt());
+    }
+
+    public void saveToDB (Connection conn) throws SQLException {
+        if (this.id == 0) {
+            String sql = "INSERT INTO users(username, email, password) VALUES (?, ?, ?)";
+            String[] generatedColumns = {"id"};
+            PreparedStatement preparedStatement
+                    = conn.prepareStatement(sql, generatedColumns);
+            preparedStatement.setString(1, this.name);
+            preparedStatement.setString(2, this.email);
+            preparedStatement.setString(3, this.password);
+            preparedStatement.executeUpdate();
+            ResultSet rs = preparedStatement.getGeneratedKeys();
+            if (rs.next()) {
+                this.id = rs.getInt(1);
+            }
+        }
     }
 
 }
