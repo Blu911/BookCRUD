@@ -2,6 +2,8 @@ package pl.coderslab.workshop2.codingschool;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
+
 import pl.coderslab.workshop2.codingschool.model.*;
 
 public class Main {
@@ -17,8 +19,18 @@ public class Main {
 //            User user = new User("Krystian", "krys@gmail.com", "haslomaslo");
 //            user.saveToDB(conn);
 
-            User user1 = User.loadUserById(conn, 1);
-            System.out.println(user1);
+//            User user1 = User.loadUserById(conn, 1);
+//            System.out.println(user1);
+
+            User newUser = new User("Krzychu", "krzych@gmail.com", "haslohaslo123");
+            newUser.saveToDB(conn);
+
+
+            ArrayList<User> users = User.loadAllUsers(conn);
+            for (User user : users) {
+                System.out.println(user);
+            }
+
 
         } catch (SQLException e) {
             e.printStackTrace();
