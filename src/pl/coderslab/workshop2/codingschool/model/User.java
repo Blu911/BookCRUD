@@ -66,6 +66,14 @@ public class User {
             if (rs.next()) {
                 this.id = rs.getInt(1);
             }
+        } else {
+            String sql = "UPDATE users SET username = ?, email = ?, password = ? where id = ?";
+            PreparedStatement preparedStatement = conn.prepareStatement(sql);
+            preparedStatement.setString(1, this.name);
+            preparedStatement.setString(2, this.email);
+            preparedStatement.setString(3, this.password);
+            preparedStatement.setInt(4, this.id);
+            preparedStatement.executeUpdate();
         }
     }
 

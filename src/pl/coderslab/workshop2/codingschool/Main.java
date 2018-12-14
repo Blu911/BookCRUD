@@ -22,15 +22,26 @@ public class Main {
 //            User user1 = User.loadUserById(conn, 1);
 //            System.out.println(user1);
 
-            User newUser = new User("Krzychu", "krzych@gmail.com", "haslohaslo123");
-            newUser.saveToDB(conn);
+//            User newUser = new User("Krzychu", "krzych@gmail.com", "haslohaslo123");
+//            newUser.saveToDB(conn);
+//
+//
+//            ArrayList<User> users = User.loadAllUsers(conn);
+//            for (User user : users) {
+//                System.out.println(user);
+//            }
 
+            User existingUser = User.loadUserById(conn, 3);
+            if (existingUser != null) {
 
-            ArrayList<User> users = User.loadAllUsers(conn);
-            for (User user : users) {
-                System.out.println(user);
+                System.out.println(String.format("Przed zmianami: %s", existingUser.toString()));
+
+                existingUser.setName("Hermes");
+                existingUser.setEmail("hermes@gmail.com");
+                existingUser.saveToDB(conn);
+
+                System.out.println(String.format("Po zmianach: %s", existingUser.toString()));
             }
-
 
         } catch (SQLException e) {
             e.printStackTrace();
