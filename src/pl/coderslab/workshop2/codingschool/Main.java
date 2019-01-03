@@ -16,6 +16,19 @@ public class Main {
 
         try (Connection conn = ConnectionFactory.getConnection(dbUsername, dbPassword, dbName)) {
 
+
+            Group group = new Group("1A");
+            group.saveToDB(conn);
+
+//            User user = new User("Magda", "Gracon", "mojehaslotomaslo");
+//            user.saveToDB(conn);
+//
+//            ArrayList<User> users = User.loadAllUsers(conn);
+//            for (User user1 : users) {
+//                System.out.println(user1);
+//            }
+
+
 //            User user = new User("Krystian", "krys@gmail.com", "haslomaslo");
 //            user.saveToDB(conn);
 
@@ -43,16 +56,16 @@ public class Main {
 //                System.out.println(String.format("Po zmianach: %s", existingUser.toString()));
 //            }
 
-            User existingUser = User.loadUserById(conn, 3);
-            if (existingUser != null) {
-                User.deleteUser(conn, existingUser);
-            }
-
-            ArrayList<User> users = User.loadAllUsers(conn);
-            for (User user : users) {
-                System.out.println(user);
-            }
-
+            //USUWANIE TEST
+//            User existingUser = User.loadUserById(conn, 3);
+//            if (existingUser != null) {
+//                User.deleteUser(conn, existingUser);
+//            }
+//
+//            ArrayList<User> users = User.loadAllUsers(conn);
+//            for (User user : users) {
+//                System.out.println(user);
+//            }
 
         } catch (SQLException e) {
             e.printStackTrace();
