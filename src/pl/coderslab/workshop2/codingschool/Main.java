@@ -16,6 +16,30 @@ public class Main {
 
         try (Connection conn = ConnectionFactory.getConnection(dbUsername, dbPassword, dbName)) {
 
+//SOLUTION - SAVE TO DB TEST
+//            Solution solution = new Solution("Nie znam odpowiedzi", 2, 2);
+//            solution.saveToDB(conn);
+
+//SOLUTION - LOAD BY ID TEST
+//            Solution solution1 = Solution.loadSolutionById(conn, 3);
+//            System.out.println(solution1);
+
+//SOLUTION- LOAD ALL SOLUTIONs TEST
+//            ArrayList<Solution> solutions = Solution.loadAllSolutions(conn);
+//            for (Solution solution : solutions){
+//                System.out.println(solution);
+//            }
+
+//SOLUTION - DELETE TEST
+//            Solution existingSolution = Solution.loadSolutionById(conn, 9);
+//            if (existingSolution != null) {
+//                Solution.deleteSolution(conn, existingSolution);
+//            }
+//            ArrayList<Solution> solutions = Solution.loadAllSolutions(conn);
+//            for (Solution solution : solutions) {
+//                System.out.println(solution);
+//            }
+
 
 //EXERCISE - SAVE TO DB TEST
 //            Exercise exercise = new Exercise("Zadanie4", "Jedno ugotowane jajko to ile kurczaków?");
