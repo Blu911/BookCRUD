@@ -17,33 +17,38 @@ public class Main {
         try (Connection conn = ConnectionFactory.getConnection(dbUsername, dbPassword, dbName)) {
 
 
-            Group group = new Group("1A");
-            group.saveToDB(conn);
 
+//GROUP- LOAD ALL USERS TEST
+//            ArrayList<Group> groups = Group.loadAllGroups(conn);
+//            for (Group group1 : groups){
+//                System.out.println(group1);
+//            }
+
+//GROUP - LOAD BY ID TEST
+//            Group group = Group.loadGroupById(conn, 3);
+//            System.out.println(group);
+
+//GROUP - SAVE TO DB TEST
+//            Group group = new Group("1A");
+//            group.saveToDB(conn);
+
+//USER - SAVE TO DB TEST
 //            User user = new User("Magda", "Gracon", "mojehaslotomaslo");
 //            user.saveToDB(conn);
 //
+
+//USER - LOAD ALL USERS TEST
 //            ArrayList<User> users = User.loadAllUsers(conn);
 //            for (User user1 : users) {
 //                System.out.println(user1);
 //            }
 
-
-//            User user = new User("Krystian", "krys@gmail.com", "haslomaslo");
-//            user.saveToDB(conn);
+//USER - LOAD BY ID TEST
 
 //            User user1 = User.loadUserById(conn, 1);
 //            System.out.println(user1);
 
-//            User newUser = new User("Krzychu", "krzych@gmail.com", "haslohaslo123");
-//            newUser.saveToDB(conn);
-//
-//
-//            ArrayList<User> users = User.loadAllUsers(conn);
-//            for (User user : users) {
-//                System.out.println(user);
-//            }
-
+//USER - UPDATE TEST
 //            User existingUser = User.loadUserById(conn, 3);
 //            if (existingUser != null) {
 //
@@ -56,7 +61,7 @@ public class Main {
 //                System.out.println(String.format("Po zmianach: %s", existingUser.toString()));
 //            }
 
-            //USUWANIE TEST
+//USER - DELETE TEST
 //            User existingUser = User.loadUserById(conn, 3);
 //            if (existingUser != null) {
 //                User.deleteUser(conn, existingUser);
