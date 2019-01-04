@@ -18,6 +18,20 @@ public class Main {
 
 
 
+
+
+
+//GROUP - DELETE TEST
+//            Group existingGroup = Group.loadGroupById(conn, 3);
+//            if (existingGroup != null) {
+//                Group.deleteGroup(conn, existingGroup);
+//            }
+//
+//            ArrayList<Group> groups = Group.loadAllGroups(conn);
+//            for (Group group : groups) {
+//                System.out.println(group);
+//            }
+
 //GROUP- LOAD ALL USERS TEST
 //            ArrayList<Group> groups = Group.loadAllGroups(conn);
 //            for (Group group1 : groups){
@@ -75,7 +89,6 @@ public class Main {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
 
     }
 
