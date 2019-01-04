@@ -17,9 +17,30 @@ public class Main {
         try (Connection conn = ConnectionFactory.getConnection(dbUsername, dbPassword, dbName)) {
 
 
+//EXERCISE - SAVE TO DB TEST
+//            Exercise exercise = new Exercise("Zadanie4", "Jedno ugotowane jajko to ile kurczaków?");
+//            exercise.saveToDB(conn);
 
+//EXERCISE - LOAD BY ID TEST
+//            Exercise exercise = Exercise.loadExerciseById(conn, 3);
+//            System.out.println(exercise);
 
+//EXERCISE- LOAD ALL EXERCISES TEST
+//            ArrayList<Exercise> exercises = Exercise.loadAllExercises(conn);
+//            for (Exercise exercise1 : exercises){
+//                System.out.println(exercise1);
+//            }
 
+//EXERCISE - DELETE TEST
+//            Exercise existingExercise = Exercise.loadExerciseById(conn, 4);
+//            if (existingExercise != null) {
+//                Exercise.deleteExercise(conn, existingExercise);
+//            }
+//
+//            ArrayList<Exercise> exercises = Exercise.loadAllExercises(conn);
+//            for (Exercise exercise1 : exercises) {
+//                System.out.println(exercise1);
+//            }
 
 //GROUP - DELETE TEST
 //            Group existingGroup = Group.loadGroupById(conn, 3);
